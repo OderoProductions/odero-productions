@@ -40,8 +40,8 @@
   --serif: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif;
   --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  --max: 1240px;
-  --gutter: clamp(20px, 4.4vw, 56px);
+  --max: 1720px;
+  --gutter: clamp(18px, 2.6vw, 44px);
   --section: clamp(80px, 11vw, 148px);
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   color-scheme: dark;
@@ -589,6 +589,114 @@ a { color: inherit; }
   font: 400 clamp(150px, 34vw, 520px)/0.72 var(--serif); letter-spacing: -0.02em; color: var(--umber);
 }
 .footer-signoff { text-align: center; padding: 22px 0 26px; font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dust); position: relative; margin-top: -1.2em; }
+
+/* ============================================================
+   Edge-to-edge layout: wide pages, giant staggered type,
+   scattered work and stacked service cards.
+   ============================================================ */
+
+/* ---------- Header: links sit in the middle ---------- */
+@media (min-width: 861px) {
+  .nav-links { flex: 1; }
+  .nav-links a:first-child { margin-left: auto; }
+  .nav-links .btn { margin-left: auto; }
+}
+
+/* ---------- Giant staggered headline ---------- */
+.mega {
+  font-family: var(--serif); font-weight: 400; letter-spacing: -0.022em;
+  font-size: clamp(58px, 12.4vw, 244px); line-height: 0.84;
+}
+.mega span { display: block; width: fit-content; }
+.mega span:nth-child(2) { margin-left: 17%; }
+.mega span:nth-child(3) { margin-left: auto; }
+.mega em { font-style: italic; color: var(--tungsten); }
+
+/* ---------- Hero ---------- */
+.hero { min-height: max(100svh, 640px); }
+.hero-media { width: 56%; }
+.hero::before {
+  background:
+    linear-gradient(0deg, var(--carbon) 0%, rgba(15, 13, 11, 0) 30%),
+    linear-gradient(90deg, var(--carbon) 43%, rgba(15, 13, 11, 0.62) 62%, rgba(15, 13, 11, 0.18) 100%);
+}
+.hero-content { justify-content: space-between; gap: 32px; padding-top: 112px; padding-bottom: clamp(28px, 3.4vw, 52px); }
+.hero-content > * { max-width: none; }
+.hero-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; }
+.hero-credit { position: static; padding: 6px 0; }
+.hero-foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 48px; }
+.hero-foot .lede { max-width: 30em; }
+.hero-ctas { margin-top: 0; }
+@media (max-width: 860px) {
+  .hero-media { width: 100%; }
+  .hero::before { background: linear-gradient(0deg, var(--carbon) 22%, rgba(15, 13, 11, 0.7) 55%, rgba(15, 13, 11, 0.34) 100%); }
+  .hero-content { padding-top: 104px; }
+  .hero-top { margin-bottom: auto; }
+}
+
+/* ---------- Label left, content right ---------- */
+.split { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 24px clamp(24px, 4vw, 64px); align-items: start; }
+.split > .eyebrow { padding-top: 0.9em; }
+.statement { max-width: 19em; }
+@media (max-width: 860px) { .split { grid-template-columns: minmax(0, 1fr); } .split > .eyebrow { padding-top: 0; } }
+
+/* ---------- Work: scattered grid ----------
+   Text stays pinned on the left while the films scroll past at
+   different sizes on the right. */
+.work-layout { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(28px, 4vw, 64px); align-items: start; }
+.work-side { position: sticky; top: 116px; display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+.work-side .lede { max-width: 22em; }
+.work-scatter { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(12px, 1.6vw, 24px); row-gap: clamp(28px, 5vw, 84px); align-items: start; }
+.work-scatter .tile { width: auto; }
+.work-scatter .tile:nth-child(1) { grid-column: 1 / span 6; }
+.work-scatter .tile:nth-child(2) { grid-column: 8 / span 4; margin-top: 46%; }
+.work-scatter .tile:nth-child(3) { grid-column: 2 / span 4; }
+.work-scatter .tile:nth-child(4) { grid-column: 7 / span 6; margin-top: -22%; }
+.work-scatter .tile:nth-child(5) { grid-column: 1 / span 5; margin-top: 12%; }
+.work-scatter .tile:nth-child(6) { grid-column: 8 / span 5; margin-top: 34%; }
+@media (max-width: 860px) {
+  .work-layout { grid-template-columns: minmax(0, 1fr); }
+  .work-side { position: static; }
+  .work-scatter { row-gap: 14px; }
+  .work-scatter .tile:nth-child(n) { grid-column: span 6; margin-top: 0; }
+  .work-scatter .tile:nth-child(even) { margin-top: 44px; }
+  .work-scatter .tile-title { font-size: 21px; }
+  .work-scatter .tile-body { padding: 14px; }
+}
+
+/* ---------- Services: stacked cards ---------- */
+.svc-stack { display: flex; flex-direction: column; gap: 18px; }
+.svc-card {
+  position: sticky; top: 92px;
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr); gap: clamp(20px, 3vw, 56px);
+  padding: clamp(14px, 1.4vw, 22px); min-height: min(62vh, 520px);
+  background: var(--umber); border: 1px solid var(--line); border-radius: 4px;
+  box-shadow: 0 -18px 40px -18px rgba(0, 0, 0, 0.7);
+}
+.svc-visual { position: relative; isolation: isolate; overflow: hidden; border-radius: 3px; min-height: 240px; display: flex; align-items: flex-end; padding: clamp(16px, 1.8vw, 26px); background: var(--carbon); }
+.svc-visual img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 50% 24%; filter: brightness(0.7) saturate(0.9); }
+.svc-visual::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(15, 13, 11, 0.9), rgba(15, 13, 11, 0) 62%); }
+.svc-visual h3 { font: 400 clamp(32px, 3.5vw, 56px)/0.96 var(--serif); letter-spacing: -0.01em; max-width: 8em; }
+.svc-visual-glow { background: radial-gradient(120% 100% at 80% 0%, #F6C56E 0%, var(--tungsten) 42%, #B9770F 100%); color: var(--carbon); }
+.svc-visual-glow::after { background: url("assets/grain.png"); background-size: 200px; mix-blend-mode: multiply; opacity: 0.22; }
+.svc-main { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; padding-block: clamp(8px, 1.4vw, 22px); }
+.svc-main .svc-head { font: 400 clamp(28px, 2.8vw, 44px)/1.04 var(--serif); letter-spacing: -0.008em; }
+.svc-main p:not(.svc-head) { color: var(--linen); max-width: 32em; }
+.svc-main .text-link { margin-top: auto; padding: 10px 0; }
+.svc-incl { padding-block: clamp(8px, 1.4vw, 22px); }
+.svc-incl p { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dust); margin-bottom: 14px; }
+.svc-incl li { padding: 9px 0; border-top: 1px solid var(--line); font-size: 16px; color: var(--bone); }
+.svc-incl li:last-child { border-bottom: 1px solid var(--line); }
+@media (max-width: 980px) {
+  .svc-card { position: static; grid-template-columns: minmax(0, 1fr); min-height: 0; box-shadow: none; }
+  .svc-main, .svc-incl { padding-inline: 6px; }
+  .svc-main .text-link { margin-top: 0; }
+}
+
+/* ---------- Contact panel with the giant headline ---------- */
+.spot { align-items: stretch; text-align: left; gap: clamp(28px, 4vw, 56px); padding: clamp(28px, 4vw, 64px); }
+.spot .mega { font-size: clamp(54px, 11vw, 216px); }
+.spot .hero-foot { align-items: center; }
 
 /* ---------- Scroll reveal ----------
    Only ever hides things when script.js has added .js, so nothing is
