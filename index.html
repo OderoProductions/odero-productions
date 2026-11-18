@@ -44,9 +44,9 @@
 
   <link rel="preload" href="assets/fonts/instrument-serif-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/instrument-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20261118a">
+  <link rel="stylesheet" href="styles.css?v=20261118b">
   <!-- Loaded in <head> on purpose: it sets the starting state before first paint -->
-  <script src="script.js?v=20261118a"></script>
+  <script src="script.js?v=20261118b"></script>
 
   <script type="application/ld+json">
   {
@@ -109,13 +109,37 @@
       <div class="container hero-content">
         <p class="eyebrow">Corporate &amp; event film · Sussex &amp; UK-wide</p>
         <h1 class="display">Films for the moments your business <em>can&rsquo;t</em> repeat.</h1>
-        <p class="lede">Conferences, launches, awards nights and brand films. Planned properly, shot cinematically and cut for every platform you post on.</p>
+        <p class="lede">Conferences, launches, awards nights and brand films. Planned like a live broadcast, lit like cinema and cut for every platform you post on.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="https://calendly.com/info-7uvm/op" target="_blank" rel="noopener">Book a call</a>
           <a class="btn btn-ghost" href="#work">See the work <span class="arrow" aria-hidden="true">&darr;</span></a>
         </div>
       </div>
+      <a class="hero-credit" href="work/courtyard-lighting/">Frame from <span>Courtyard lighting project</span></a>
     </section>
+
+    <!-- ================= INTRO =================
+         The statement lights up word by word as it scrolls into view. -->
+    <section class="section intro" aria-label="About Odero Productions">
+      <div class="container">
+        <p class="statement" data-light-up>Odero Productions is a film studio in Worthing, Sussex, for businesses with something worth showing. The launch. The keynote. The one night the whole team is in the same room. We plan it, light it, film it and hand it back ready to post.</p>
+        <dl class="meta-row reveal">
+          <div><dt>Based</dt><dd>Worthing, Sussex</dd></div>
+          <div><dt>Films</dt><dd>Across the UK</dd></div>
+          <div><dt>Delivers</dt><dd>16:9, 1:1 and 9:16</dd></div>
+          <div><dt>Founder</dt><dd>Christopher Odero</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ================= MARQUEE =================
+         The second copy is there so the loop has no seam. Edit both. -->
+    <div class="marquee" aria-label="What we film: conferences, product launches, awards nights, brand films, interviews, testimonials, away days and social cutdowns">
+      <div class="marquee-track" aria-hidden="true">
+        <span>Conferences</span><span><em>Product launches</em></span><span>Awards nights</span><span><em>Brand films</em></span><span>Interviews</span><span><em>Testimonials</em></span><span>Away days</span><span><em>Social cutdowns</em></span>
+        <span>Conferences</span><span><em>Product launches</em></span><span>Awards nights</span><span><em>Brand films</em></span><span>Interviews</span><span><em>Testimonials</em></span><span>Away days</span><span><em>Social cutdowns</em></span>
+      </div>
+    </div>
 
     <!-- ================= SELECTED WORK =================
          Each tile links to its own page in work/<slug>/index.html.
@@ -139,7 +163,7 @@
         </div>
       </div>
 
-      <div class="rail reveal" id="work-rail" tabindex="0" role="region" aria-label="Selected work, scrolls sideways">
+      <div class="rail rail-stagger reveal" id="work-rail" tabindex="0" role="region" aria-label="Selected work, scrolls sideways">
         <a class="tile" href="work/courtyard-lighting/">
           <img src="assets/work/courtyard-lighting.jpg" alt="Interview in front of a lit gold wall" width="720" height="1280" loading="lazy">
           <span class="tile-play" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg></span>
@@ -173,44 +197,53 @@
       </div>
     </section>
 
-    <!-- ================= SERVICES =================
+    <!-- ================= THE PROMISE (tungsten band) ================= -->
+    <section class="glow-band" aria-label="Our promise">
+      <div class="container">
+        <p class="eyebrow">Why film it</p>
+        <p class="glow-statement">The speech happens once. The room empties by eleven. Our job is to make sure it&rsquo;s all still there on Monday.</p>
+        <p class="readout" aria-hidden="true"><span>3200K</span><span>Tungsten</span><span>Warm light, dark room</span></p>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES (light section) =================
          TODO (Christopher): confirm this list. Add, remove or reword freely. -->
-    <section class="section rule-top" id="services" aria-labelledby="services-heading">
+    <section class="section paper" id="services" aria-labelledby="services-heading">
       <div class="container">
         <div class="section-head reveal">
           <div>
             <p class="eyebrow">Services</p>
             <h2 class="h2" id="services-heading">What we film</h2>
           </div>
-          <p class="aside">One crew from first call to final delivery. Every shoot gets a plan, a shot list and a single point of contact.</p>
+          <p class="aside">One crew from first call to final delivery. Every shoot gets a plan, a shot list and one person to call.</p>
         </div>
 
-        <div class="service-grid">
-          <article class="service reveal">
-            <h3 class="h3">Conferences &amp; summits</h3>
-            <p>Keynotes, panels and the room between them, cut into a highlights film and clips for social.</p>
-          </article>
-          <article class="service reveal">
-            <h3 class="h3">Launches &amp; awards nights</h3>
-            <p>Low light, big moments, no second takes. The running order becomes a shot list so nothing gets missed.</p>
-          </article>
-          <article class="service reveal">
-            <h3 class="h3">Brand &amp; company films</h3>
-            <p>Who you are and why it matters, told in a couple of minutes your team will want to share.</p>
-          </article>
-          <article class="service reveal">
-            <h3 class="h3">Interviews &amp; testimonials</h3>
-            <p>Clients and leaders on camera, lit properly and edited to sound like themselves.</p>
-          </article>
-          <article class="service reveal">
-            <h3 class="h3">Short-form for social</h3>
+        <ul class="svc-list reveal">
+          <li class="svc">
+            <h3>Conferences &amp; summits</h3>
+            <p>Keynotes, panels and the conversations in the corridor, cut into a highlights film and clips for social.</p>
+          </li>
+          <li class="svc">
+            <h3>Launches &amp; awards nights</h3>
+            <p>Low light, big moments, no second takes. Your running order becomes our shot list, so nothing gets missed.</p>
+          </li>
+          <li class="svc">
+            <h3>Brand &amp; company films</h3>
+            <p>Who you are and why it matters, in two minutes your team will actually want to share.</p>
+          </li>
+          <li class="svc">
+            <h3>Interviews &amp; testimonials</h3>
+            <p>Clients and leaders on camera, properly lit and edited to sound like themselves on a good day.</p>
+          </li>
+          <li class="svc">
+            <h3>Short-form for social</h3>
             <p>Vertical edits with captions and on-screen text, ready for Instagram, LinkedIn and paid ads.</p>
-          </article>
-          <article class="service reveal">
-            <h3 class="h3">Photography</h3>
+          </li>
+          <li class="svc">
+            <h3>Photography</h3>
             <p>Edited stills from the same shoot, for the website, the press release and the post the next morning.</p>
-          </article>
-        </div>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -220,7 +253,7 @@
         <div class="formats-copy reveal">
           <p class="eyebrow">Delivery</p>
           <h2 class="h2" id="formats-heading">Shot once. Cut for <em>every</em> screen.</h2>
-          <p class="lede">Every film is delivered in the shapes you actually need: widescreen for the website and the big screen, square for feeds and vertical for Reels, TikTok and Shorts.</p>
+          <p class="lede">One shoot, three shapes. Widescreen for the website and the big screen, square for feeds, vertical for Reels, TikTok and Shorts.</p>
         </div>
         <div class="frames reveal" aria-hidden="true">
           <div class="frame frame-wide">
@@ -239,7 +272,7 @@
       </div>
     </section>
 
-    <!-- ================= PROCESS ================= -->
+    <!-- ================= PROCESS (the call sheet) ================= -->
     <section class="section" id="process" aria-labelledby="process-heading">
       <div class="container">
         <div class="section-head reveal">
@@ -249,20 +282,36 @@
           </div>
           <p class="aside">Three steps, agreed up front, so you always know what happens next.</p>
         </div>
-        <ol class="steps">
-          <li class="step reveal">
-            <h3 class="h3">The brief</h3>
-            <p>A call to pin down the audience, the message and the moments that matter. You get a plan, a shot list and a timeline before anything is booked.</p>
-          </li>
-          <li class="step reveal">
-            <h3 class="h3">The shoot</h3>
-            <p>A focused day on location at your venue, office or site. Keynotes, interviews and b-roll captured without getting in anyone&rsquo;s way.</p>
-          </li>
-          <li class="step reveal">
-            <h3 class="h3">The delivery</h3>
-            <p>Polished edits in platform-ready formats, with subtitles and edited photos, on the turnaround agreed in the brief.</p>
-          </li>
-        </ol>
+
+        <div class="callsheet reveal">
+          <div class="callsheet-top">
+            <span>Call sheet</span>
+            <span>Odero Productions</span>
+            <span>Your shoot</span>
+          </div>
+          <table>
+            <thead>
+              <tr><th scope="col">Step</th><th scope="col">What happens</th><th scope="col">What you get</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><span class="num">1</span> The brief</th>
+                <td data-label="What happens">A call to pin down the audience, the message and the moments that matter most.</td>
+                <td data-label="What you get">A plan, a shot list and a timeline, before anything is booked.</td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="num">2</span> The shoot</th>
+                <td data-label="What happens">A focused day at your venue, office or site. Keynotes, interviews and b-roll, without getting in anyone&rsquo;s way.</td>
+                <td data-label="What you get">Everything on the shot list, captured the first time.</td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="num">3</span> The delivery</th>
+                <td data-label="What happens">The edit, with subtitles and on-screen text, and a round of changes if you need one.</td>
+                <td data-label="What you get">Films in every format you post in, plus edited photos, on the date we agreed.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
@@ -278,13 +327,9 @@
         </div>
         <div class="about-body reveal">
           <p>I&rsquo;m Christopher Odero. I learned to film in sports broadcasting, where nothing happens twice.</p>
-          <p>That is still how I work. Plan the coverage, know where the moment will be, and get the shot the first time. An awards night or a keynote runs on the same rules as a live match.</p>
-          <p>Odero Productions is based in Worthing, Sussex, and films for businesses across the UK. I plan, shoot and edit, and bring in extra crew when a job needs it.</p>
-          <dl class="facts">
-            <div><dt>Based</dt><dd>Worthing, Sussex</dd></div>
-            <div><dt>Covers</dt><dd>Across the UK</dd></div>
-            <div><dt>Background</dt><dd>Sports broadcasting</dd></div>
-          </dl>
+          <p>That&rsquo;s still how I work. Plan the coverage, know where the moment will be, and get it the first time. An awards night runs on the same rules as a live match: one chance, no retakes, and everyone watching afterwards.</p>
+          <p>Odero Productions is based in Worthing and films for businesses across the UK. I plan, shoot and edit, and bring in extra crew when a job needs more hands.</p>
+          <p class="signoff">Christopher Odero <span>Founder, Odero Productions</span></p>
         </div>
       </div>
     </section>
@@ -294,7 +339,7 @@
       <div class="container faq-wrap">
         <div class="stack reveal">
           <p class="eyebrow">Questions</p>
-          <h2 class="h2" id="faqs-heading">FAQs</h2>
+          <h2 class="h2" id="faqs-heading">Before you <em>book</em></h2>
         </div>
         <div class="faq-list reveal">
           <details class="faq">
@@ -303,15 +348,15 @@
           </details>
           <details class="faq">
             <summary>Can you film on-site?</summary>
-            <p>Yes. We film on location at your premises, your venue or anywhere else that helps tell the story.</p>
+            <p>Yes. We film at your premises, your venue or anywhere else that helps tell the story.</p>
           </details>
           <details class="faq">
             <summary>Do you help with the concept?</summary>
-            <p>Yes, creative direction is included. During the brief we work out the angles, the structure and the questions with you, so it fits your audience and what you&rsquo;re offering.</p>
+            <p>Yes, creative direction is included. During the brief we work out the angles, the structure and the questions with you, so the film fits your audience.</p>
           </details>
           <details class="faq">
             <summary>What if we don&rsquo;t want to be on camera?</summary>
-            <p>No problem. We can use voiceover, or build the film around your work, your space and your event without talking heads.</p>
+            <p>No problem. We can use voiceover, or build the film around your work, your space and your event, with no talking heads.</p>
           </details>
           <details class="faq">
             <summary>Which formats do you deliver?</summary>
@@ -329,16 +374,17 @@
       </div>
     </section>
 
-    <!-- ================= CONTACT ================= -->
-    <section class="section contact rule-top" id="contact" aria-labelledby="contact-heading">
-      <div class="container contact-inner">
-        <div class="contact-main reveal">
+    <!-- ================= CONTACT =================
+         The warm light in the panel follows the pointer. -->
+    <section class="section-tight" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="spot reveal" data-spotlight>
           <p class="eyebrow">Now booking</p>
           <h2 class="display" id="contact-heading">Got a date in the <em>diary?</em></h2>
           <p class="lede">Tell us what you&rsquo;re planning. A short call is the quickest way to work out what it needs.</p>
           <a class="btn btn-primary" href="https://calendly.com/info-7uvm/op" target="_blank" rel="noopener">Book a call <span class="arrow" aria-hidden="true">&rarr;</span></a>
         </div>
-        <div class="contact-list reveal">
+        <div class="contact-row reveal">
           <a href="mailto:info@oderoproductions.com"><span>Email</span><span>info@oderoproductions.com</span></a>
           <a href="https://wa.me/447708309296" target="_blank" rel="noopener"><span>WhatsApp</span><span>+44 7708 309296</span></a>
           <a href="https://www.instagram.com/oderoproductions/" target="_blank" rel="noopener"><span>Instagram</span><span>@oderoproductions</span></a>
@@ -365,6 +411,8 @@
         <p>Worthing, Sussex. Filming across the UK.</p>
       </div>
     </div>
+    <p class="footer-word" aria-hidden="true">Odero</p>
+    <p class="footer-signoff">Lights down.</p>
   </footer>
 </body>
 </html>

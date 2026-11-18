@@ -427,6 +427,169 @@ a { color: inherit; }
 .prose a { color: var(--bone); text-decoration-color: var(--tungsten); text-underline-offset: 4px; }
 .notfound { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; gap: 26px; align-items: flex-start; }
 
+/* ============================================================
+   Feature sections. Each one has its own look on purpose.
+   ============================================================ */
+
+/* ---------- Hero credit ---------- */
+.hero-credit {
+  position: absolute; right: var(--gutter); bottom: 30px; z-index: 1;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--linen); text-decoration: none; padding: 10px 0;
+}
+.hero-credit span { color: var(--bone); border-bottom: 1px solid var(--tungsten); padding-bottom: 2px; }
+.hero-credit:hover span { color: var(--tungsten-hot); }
+@media (max-width: 860px) { .hero-credit { display: none; } }
+
+/* ---------- Intro statement: lights up as you scroll ---------- */
+.intro { padding-bottom: clamp(56px, 7vw, 96px); }
+.statement {
+  font-family: var(--serif); font-size: clamp(30px, 4.3vw, 62px); line-height: 1.1; letter-spacing: -0.008em;
+  max-width: 21em; text-wrap: pretty;
+}
+.statement .w { color: rgba(239, 231, 218, 0.2); transition: color 0.5s var(--ease); }
+.statement .w.lit { color: var(--bone); }
+.meta-row {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;
+  margin-top: clamp(40px, 5vw, 72px); padding-top: 24px; border-top: 1px solid var(--line);
+}
+.meta-row dt { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dust); margin-bottom: 6px; }
+.meta-row dd { font-size: 17px; color: var(--bone); }
+@media (max-width: 720px) { .meta-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ---------- Marquee ---------- */
+.marquee { overflow: hidden; border-block: 1px solid var(--line); padding-block: clamp(18px, 2.4vw, 30px); }
+.marquee-track { display: flex; width: max-content; animation: marquee 46s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-track span {
+  display: inline-flex; align-items: center; white-space: nowrap;
+  font-family: var(--serif); font-size: clamp(40px, 6vw, 88px); line-height: 1; color: var(--bone);
+}
+.marquee-track span::after {
+  content: ""; width: 0.14em; height: 0.14em; border-radius: 50%; background: var(--tungsten);
+  margin-inline: 0.42em; box-shadow: 0 0 18px 3px rgba(232, 162, 58, 0.5);
+}
+.marquee-track em { font-style: italic; color: transparent; -webkit-text-stroke: 1px var(--dust); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ---------- Work rail: every other tile sits lower ---------- */
+.rail-stagger { padding-bottom: 56px; }
+.rail-stagger .tile:nth-child(even) { margin-top: 52px; }
+@media (max-width: 640px) {
+  .rail-stagger { padding-bottom: 4px; }
+  .rail-stagger .tile:nth-child(even) { margin-top: 0; }
+}
+
+/* ---------- The tungsten band ---------- */
+.glow-band {
+  position: relative; isolation: isolate; overflow: hidden;
+  background: var(--tungsten); color: var(--carbon);
+  padding-block: clamp(80px, 11vw, 156px);
+}
+.glow-band::before {       /* the hot centre of the lamp */
+  content: ""; position: absolute; z-index: -1; inset: -40% -10% auto auto; width: 90%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 226, 160, 0.9), rgba(255, 226, 160, 0) 70%);
+}
+.glow-band::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: url("assets/grain.png"); background-size: 200px; mix-blend-mode: multiply; opacity: 0.22;
+}
+.glow-band .eyebrow { color: rgba(15, 13, 11, 0.78); }
+.glow-band .eyebrow::before { background: var(--carbon); box-shadow: none; }
+.glow-statement {
+  margin-top: 28px; max-width: 13.5em;
+  font-family: var(--serif); font-size: clamp(42px, 7vw, 108px); line-height: 0.98; letter-spacing: -0.015em; text-wrap: balance;
+}
+.readout { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: clamp(36px, 5vw, 64px); font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(15, 13, 11, 0.74); }
+.readout span:first-child { color: var(--carbon); }
+
+/* ---------- Services: the one light section ---------- */
+.paper { background: var(--bone); color: var(--carbon); }
+.paper .eyebrow { color: #5E574D; }
+.paper .eyebrow::before { box-shadow: none; background: #B9770F; }
+.paper .section-head p.aside { color: #4A443B; }
+.paper :focus-visible { outline-color: var(--carbon); }
+.svc-list { border-top: 1px solid rgba(15, 13, 11, 0.3); }
+.svc {
+  position: relative; display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 12px clamp(24px, 5vw, 72px); align-items: center;
+  padding: clamp(20px, 2.4vw, 30px) clamp(0px, 1.6vw, 22px); border-bottom: 1px solid rgba(15, 13, 11, 0.3);
+  transition: background-color 0.35s var(--ease), color 0.35s var(--ease), padding 0.35s var(--ease);
+}
+.svc h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4.2vw, 58px); line-height: 1; letter-spacing: -0.01em; }
+.svc p { font-size: 16.5px; line-height: 1.5; color: #4A443B; max-width: 30em; transition: color 0.35s var(--ease); }
+.svc::after {
+  content: ""; position: absolute; right: clamp(0px, 1.6vw, 22px); top: 50%; width: 9px; height: 9px; margin-top: -4.5px; border-radius: 50%;
+  background: var(--tungsten); box-shadow: 0 0 18px 4px rgba(232, 162, 58, 0.6); opacity: 0; transition: opacity 0.35s var(--ease);
+}
+@media (hover: hover) and (min-width: 761px) {
+  .svc:hover { background: var(--carbon); color: var(--bone); padding-inline: clamp(12px, 2.6vw, 36px) clamp(40px, 4vw, 56px); }
+  .svc:hover p { color: var(--linen); }
+  .svc:hover::after { opacity: 1; right: clamp(12px, 2.6vw, 36px); }
+}
+@media (max-width: 760px) { .svc { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Process: the call sheet ---------- */
+.callsheet {
+  background: var(--bone); color: var(--carbon); border-radius: 3px;
+  padding: clamp(20px, 3vw, 40px); box-shadow: 0 30px 80px -30px rgba(232, 162, 58, 0.28);
+}
+.callsheet-top {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; padding-bottom: 14px; border-bottom: 2px solid var(--carbon);
+  font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+}
+.callsheet table { width: 100%; border-collapse: collapse; }
+.callsheet thead th { text-align: left; padding: 14px 20px 12px 0; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #5E574D; border-bottom: 1px solid rgba(15, 13, 11, 0.3); }
+.callsheet tbody th, .callsheet tbody td { padding: clamp(18px, 2.2vw, 28px) 24px clamp(18px, 2.2vw, 28px) 0; vertical-align: top; text-align: left; border-bottom: 1px solid rgba(15, 13, 11, 0.18); }
+.callsheet tbody tr:last-child th, .callsheet tbody tr:last-child td { border-bottom: 0; padding-bottom: 6px; }
+.callsheet tbody th { width: 30%; font: 400 clamp(28px, 3vw, 42px)/1 var(--serif); white-space: nowrap; }
+.callsheet .num { display: inline-block; min-width: 1.1em; font-style: italic; color: #96600C; }
+.callsheet td { font-size: 16.5px; line-height: 1.5; color: #2E2A24; }
+.callsheet td:last-child { font-weight: 600; color: var(--carbon); }
+@media (max-width: 760px) {
+  .callsheet thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .callsheet table, .callsheet tbody, .callsheet tr, .callsheet tbody th, .callsheet td { display: block; width: 100%; }
+  .callsheet tbody th { border-bottom: 0; padding-bottom: 4px; white-space: normal; }
+  .callsheet tbody td { border-bottom: 0; padding: 8px 0; }
+  .callsheet td::before { content: attr(data-label); display: block; font-size: 11.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #5E574D; margin-bottom: 2px; }
+  .callsheet tbody tr { border-bottom: 1px solid rgba(15, 13, 11, 0.18); padding-bottom: 14px; }
+  .callsheet tbody tr:last-child { border-bottom: 0; padding-bottom: 0; }
+}
+
+/* ---------- About sign-off ---------- */
+.signoff { margin-top: 14px; padding-top: 22px; border-top: 1px solid var(--line); font-family: var(--serif); font-style: italic; font-size: 30px; line-height: 1.1; color: var(--bone); }
+.signoff span { display: block; margin-top: 8px; font: 600 12px/1.4 var(--sans); font-style: normal; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dust); }
+
+/* ---------- Contact: a lamp that follows the pointer ---------- */
+.spot {
+  position: relative; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 4px;
+  display: flex; flex-direction: column; align-items: center; gap: 26px; text-align: center;
+  padding: clamp(64px, 10vw, 150px) var(--gutter);
+  background:
+    radial-gradient(520px circle at var(--mx, 72%) var(--my, 108%), rgba(232, 162, 58, 0.34), rgba(232, 162, 58, 0) 62%),
+    var(--umber);
+}
+.spot::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: url("assets/grain.png"); background-size: 200px; mix-blend-mode: overlay; opacity: 0.14; }
+.spot > * { position: relative; z-index: 1; }
+.spot .lede { max-width: 28em; }
+.contact-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(16px, 2.4vw, 32px); margin-top: 28px; }
+.contact-row a {
+  display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 1px solid var(--line-strong); text-decoration: none;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.contact-row a:hover { color: var(--tungsten-hot); border-top-color: var(--tungsten); }
+.contact-row span:first-child { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dust); }
+.contact-row span:last-child { font-size: 16px; overflow-wrap: anywhere; }
+@media (max-width: 1120px) { .contact-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .contact-row { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Footer: the name, then lights down ---------- */
+.site-footer { overflow: hidden; padding-bottom: 0; }
+.footer-word {
+  margin-top: clamp(28px, 4vw, 56px); text-align: center; user-select: none;
+  font: 400 clamp(150px, 34vw, 520px)/0.72 var(--serif); letter-spacing: -0.02em; color: var(--umber);
+}
+.footer-signoff { text-align: center; padding: 22px 0 26px; font-size: 12px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dust); position: relative; margin-top: -1.2em; }
+
 /* ---------- Scroll reveal ----------
    Only ever hides things when script.js has added .js, so nothing is
    stranded without JavaScript or with reduced motion on. */
@@ -435,5 +598,7 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .marquee-track { flex-wrap: wrap; width: auto; justify-content: center; row-gap: 8px; }
+  .marquee-track span:nth-child(n+9) { display: none; }
   *, *::before, *::after { transition-duration: 0.01ms !important; transition-delay: 0s !important; animation: none !important; }
 }

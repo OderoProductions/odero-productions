@@ -142,3 +142,60 @@
     document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
   });
 })();
+
+/* ============================================================
+   Feature sections
+   ============================================================ */
+(function () {
+  "use strict";
+  var reducedMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function start() {
+    /* ---------- Intro statement: words light up as they scroll in ----------
+       Without JavaScript, or with reduced motion on, the text is simply lit. */
+    var statement = document.querySelector("[data-light-up]");
+    if (statement && !reducedMotion) {
+      var words = statement.textContent.trim().split(/\s+/);
+      statement.textContent = "";
+      var spans = words.map(function (word, i) {
+        var span = document.createElement("span");
+        span.className = "w";
+        span.textContent = word;
+        statement.appendChild(span);
+        if (i < words.length - 1) statement.appendChild(document.createTextNode(" "));
+        return span;
+      });
+      var queued = false;
+      var light = function () {
+        queued = false;
+        var rect = statement.getBoundingClientRect();
+        var vh = window.innerHeight;
+        // 0 when the top edge is 85% down the screen, 1 when the bottom edge reaches 45%
+        var progress = (vh * 0.85 - rect.top) / (rect.height + vh * 0.4);
+        var count = Math.round(Math.max(0, Math.min(1, progress)) * spans.length);
+        spans.forEach(function (span, i) { span.classList.toggle("lit", i < count); });
+      };
+      var onScroll = function () { if (!queued) { queued = true; requestAnimationFrame(light); } };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+      light();
+    }
+
+    /* ---------- Contact panel: the lamp follows the pointer ---------- */
+    var spot = document.querySelector("[data-spotlight]");
+    if (spot && !reducedMotion && window.matchMedia("(hover: hover)").matches) {
+      spot.addEventListener("pointermove", function (e) {
+        var rect = spot.getBoundingClientRect();
+        spot.style.setProperty("--mx", (e.clientX - rect.left) + "px");
+        spot.style.setProperty("--my", (e.clientY - rect.top) + "px");
+      });
+      spot.addEventListener("pointerleave", function () {
+        spot.style.removeProperty("--mx");
+        spot.style.removeProperty("--my");
+      });
+    }
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
+  else start();
+})();
