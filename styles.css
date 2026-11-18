@@ -634,6 +634,28 @@ a { color: inherit; }
   .hero-top { margin-bottom: auto; }
 }
 
+/* ---------- Trusted by: client logos ---------- */
+.clients { padding-block: clamp(36px, 4.4vw, 64px) clamp(8px, 1vw, 16px); }
+.clients .eyebrow { justify-content: center; margin-bottom: clamp(26px, 3vw, 44px); }
+.clients-window {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+.clients-track { display: flex; align-items: center; width: max-content; animation: marquee 52s linear infinite; }
+.clients-window:hover .clients-track { animation-play-state: paused; }
+.client { flex: none; display: flex; align-items: center; gap: 12px; padding-inline: clamp(26px, 3.2vw, 54px); opacity: 0.62; transition: opacity 0.3s var(--ease); }
+.client:hover { opacity: 1; }
+.client img { height: 38px; width: auto; max-width: 190px; object-fit: contain; }
+.client-tall img { height: 62px; }
+.client-named img { height: 36px; }
+.client-named span { font-size: 15px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--bone); white-space: nowrap; }
+@media (max-width: 640px) {
+  .client img { height: 30px; max-width: 150px; }
+  .client-tall img { height: 50px; }
+  .client-named img { height: 30px; }
+}
+
 /* ---------- Label left, content right ---------- */
 .split { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 24px clamp(24px, 4vw, 64px); align-items: start; }
 .split > .eyebrow { padding-top: 0.9em; }
@@ -708,5 +730,8 @@ a { color: inherit; }
   html { scroll-behavior: auto; }
   .marquee-track { flex-wrap: wrap; width: auto; justify-content: center; row-gap: 8px; }
   .marquee-track span:nth-child(n+9) { display: none; }
+  .clients-track { flex-wrap: wrap; width: auto; justify-content: center; row-gap: 28px; }
+  .clients-track .client[aria-hidden] { display: none; }
+  .clients-window { -webkit-mask-image: none; mask-image: none; }
   *, *::before, *::after { transition-duration: 0.01ms !important; transition-delay: 0s !important; animation: none !important; }
 }

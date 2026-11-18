@@ -44,9 +44,9 @@
 
   <link rel="preload" href="assets/fonts/instrument-serif-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/instrument-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20261118c">
+  <link rel="stylesheet" href="styles.css?v=20261118d">
   <!-- Loaded in <head> on purpose: it sets the starting state before first paint -->
-  <script src="script.js?v=20261118c"></script>
+  <script src="script.js?v=20261118d"></script>
 
   <script type="application/ld+json">
   {
@@ -119,6 +119,37 @@
             <a class="btn btn-ghost" href="#work">See the work <span class="arrow" aria-hidden="true">&darr;</span></a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ================= TRUSTED BY =================
+         Client logos, all turned into one flat colour so they read as a set.
+         The second copy of the list is there so the loop has no seam.
+         To add one: save a single-colour PNG (about 168px tall, transparent
+         background) in assets/clients/ and add an <li> to BOTH copies.
+         TODO: Double Media's site only has a small icon, so their name is set
+         in text beside it. Swap in their full logo when there is one. -->
+    <section class="clients" aria-labelledby="clients-heading">
+      <p class="eyebrow" id="clients-heading">Trusted by</p>
+      <div class="clients-window">
+        <ul class="clients-track">
+          <li class="client"><img src="assets/clients/angel-investor-summit.png" alt="Angel Investor Summit" width="504" height="168" loading="lazy"></li>
+          <li class="client"><img src="assets/clients/montaj-digital.png" alt="Montaj Digital" width="620" height="127" loading="lazy"></li>
+          <li class="client"><img src="assets/clients/greenpower.png" alt="Greenpower" width="620" height="154" loading="lazy"></li>
+          <li class="client client-tall"><img src="assets/clients/lanes-watch-shop.png" alt="Lanes Watch Shop" width="167" height="168" loading="lazy"></li>
+          <li class="client"><img src="assets/clients/cln-work.png" alt="CLN Work" width="583" height="168" loading="lazy"></li>
+          <li class="client client-tall"><img src="assets/clients/egrowth-media.png" alt="eGrowth Media" width="178" height="168" loading="lazy"></li>
+          <li class="client client-tall"><img src="assets/clients/pumpkin-patch-nursery.png" alt="Pumpkin Patch Nursery" width="429" height="168" loading="lazy"></li>
+          <li class="client client-named"><img src="assets/clients/double-media.png" alt="" width="196" height="168" loading="lazy"><span>Double Media</span></li>
+          <li class="client" aria-hidden="true"><img src="assets/clients/angel-investor-summit.png" alt="" width="504" height="168" loading="lazy"></li>
+          <li class="client" aria-hidden="true"><img src="assets/clients/montaj-digital.png" alt="" width="620" height="127" loading="lazy"></li>
+          <li class="client" aria-hidden="true"><img src="assets/clients/greenpower.png" alt="" width="620" height="154" loading="lazy"></li>
+          <li class="client client-tall" aria-hidden="true"><img src="assets/clients/lanes-watch-shop.png" alt="" width="167" height="168" loading="lazy"></li>
+          <li class="client" aria-hidden="true"><img src="assets/clients/cln-work.png" alt="" width="583" height="168" loading="lazy"></li>
+          <li class="client client-tall" aria-hidden="true"><img src="assets/clients/egrowth-media.png" alt="" width="178" height="168" loading="lazy"></li>
+          <li class="client client-tall" aria-hidden="true"><img src="assets/clients/pumpkin-patch-nursery.png" alt="" width="429" height="168" loading="lazy"></li>
+          <li class="client client-named" aria-hidden="true"><img src="assets/clients/double-media.png" alt="" width="196" height="168" loading="lazy"><span>Double Media</span></li>
+        </ul>
       </div>
     </section>
 

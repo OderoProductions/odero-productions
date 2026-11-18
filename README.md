@@ -26,6 +26,7 @@ self-hosted in `assets/fonts/` under the SIL Open Font License.
 | Hero video | `index.html`, search `HERO VIDEO` |
 | Work tiles | `index.html`, search `SELECTED WORK` |
 | Project pages | `work/<slug>/index.html` |
+| Client logos | `index.html`, search `TRUSTED BY`; files in `assets/clients/` |
 | Accent colour | `styles.css`, `--tungsten` |
 | Logo files | `assets/brand/` |
 
