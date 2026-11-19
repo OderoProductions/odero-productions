@@ -643,7 +643,6 @@ a { color: inherit; }
   mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
 }
 .clients-track { display: flex; align-items: center; width: max-content; animation: marquee 52s linear infinite; }
-.clients-window:hover .clients-track { animation-play-state: paused; }
 .client { flex: none; display: flex; align-items: center; gap: 12px; padding-inline: clamp(26px, 3.2vw, 54px); opacity: 0.62; transition: opacity 0.3s var(--ease); }
 .client:hover { opacity: 1; }
 .client img { height: 38px; width: auto; max-width: 190px; object-fit: contain; }
