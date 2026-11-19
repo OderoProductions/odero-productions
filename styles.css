@@ -110,8 +110,8 @@ a { color: inherit; }
   font: 600 16px/1 var(--sans); text-decoration: none; cursor: pointer;
   transition: background-color 0.25s var(--ease), border-color 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease);
 }
-.btn-primary { background: var(--tungsten); color: var(--carbon); }
-.btn-primary:hover { background: var(--tungsten-hot); }
+.btn-primary { background: url("assets/grain-fine.png") 0 0 / 200px, var(--tungsten); color: var(--carbon); }
+.btn-primary:hover { background: url("assets/grain-fine.png") 0 0 / 200px, var(--tungsten-hot); }
 .btn-ghost { border-color: var(--line-strong); color: var(--bone); font-weight: 500; }
 .btn-ghost:hover { border-color: var(--bone); }
 .btn-small { min-height: 44px; padding: 0 20px; font-size: 14.5px; }
@@ -190,7 +190,7 @@ a { color: inherit; }
 }
 .hero::after {             /* film grain */
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: url("assets/grain.png"); background-size: 200px; mix-blend-mode: overlay; opacity: 0.16;
+  background: url("assets/grit.png"); background-size: 320px; opacity: 0.2;
 }
 .hero-content {
   display: flex; flex-direction: column; justify-content: flex-end; gap: 28px;
@@ -492,7 +492,7 @@ a { color: inherit; }
 }
 .glow-band::after {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: url("assets/grain.png"); background-size: 200px; mix-blend-mode: multiply; opacity: 0.22;
+  background: url("assets/grit.png"); background-size: 320px; opacity: 0.46;
 }
 .glow-band .eyebrow { color: rgba(15, 13, 11, 0.78); }
 .glow-band .eyebrow::before { background: var(--carbon); box-shadow: none; }
@@ -568,7 +568,7 @@ a { color: inherit; }
     radial-gradient(520px circle at var(--mx, 72%) var(--my, 108%), rgba(232, 162, 58, 0.34), rgba(232, 162, 58, 0) 62%),
     var(--umber);
 }
-.spot::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: url("assets/grain.png"); background-size: 200px; mix-blend-mode: overlay; opacity: 0.14; }
+.spot::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: url("assets/grit.png"); background-size: 320px; opacity: 0.3; }
 .spot > * { position: relative; z-index: 1; }
 .spot .lede { max-width: 28em; }
 .contact-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(16px, 2.4vw, 32px); margin-top: 28px; }
@@ -700,7 +700,7 @@ a { color: inherit; }
 .svc-visual::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(15, 13, 11, 0.9), rgba(15, 13, 11, 0) 62%); }
 .svc-visual h3 { font: 400 clamp(32px, 3.5vw, 56px)/0.96 var(--serif); letter-spacing: -0.01em; max-width: 8em; }
 .svc-visual-glow { background: radial-gradient(120% 100% at 80% 0%, #F6C56E 0%, var(--tungsten) 42%, #B9770F 100%); color: var(--carbon); }
-.svc-visual-glow::after { background: url("assets/grain.png"); background-size: 200px; mix-blend-mode: multiply; opacity: 0.22; }
+.svc-visual-glow::after { background: url("assets/grit.png"); background-size: 320px; opacity: 0.5; }
 .svc-main { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; padding-block: clamp(8px, 1.4vw, 22px); }
 .svc-main .svc-head { font: 400 clamp(28px, 2.8vw, 44px)/1.04 var(--serif); letter-spacing: -0.008em; }
 .svc-main p:not(.svc-head) { color: var(--linen); max-width: 32em; }
@@ -710,7 +710,7 @@ a { color: inherit; }
 .svc-incl li { padding: 9px 0; border-top: 1px solid var(--line); font-size: 16px; color: var(--bone); }
 .svc-incl li:last-child { border-bottom: 1px solid var(--line); }
 @media (max-width: 980px) {
-  .svc-card { position: static; grid-template-columns: minmax(0, 1fr); min-height: 0; box-shadow: none; }
+  .svc-card { position: relative; top: auto; grid-template-columns: minmax(0, 1fr); min-height: 0; box-shadow: none; }
   .svc-main, .svc-incl { padding-inline: 6px; }
   .svc-main .text-link { margin-top: 0; }
 }
@@ -719,6 +719,34 @@ a { color: inherit; }
 .spot { align-items: stretch; text-align: left; gap: clamp(28px, 4vw, 56px); padding: clamp(28px, 4vw, 64px); }
 .spot .mega { font-size: clamp(54px, 11vw, 216px); }
 .spot .hero-foot { align-items: center; }
+
+/* ============================================================
+   Grain. Film grain on the gold, and a grittier texture in the
+   background of some sections. Add class="grit" (plus one of the
+   glow classes) to a section to texture it.
+   ============================================================ */
+.grit { position: relative; isolation: isolate; }
+.grit::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: url("assets/grit.png"); background-size: 320px; opacity: 0.24;
+}
+/* a warm wash under the grain, placed differently in each section */
+.grit::after { content: ""; position: absolute; inset: 0; z-index: -2; pointer-events: none; }
+.glow-tr::after { background: radial-gradient(52% 70% at 100% 0%, rgba(232, 162, 58, 0.16), rgba(232, 162, 58, 0) 70%); }
+.glow-mid::after { background: radial-gradient(60% 55% at 50% 62%, rgba(232, 162, 58, 0.17), rgba(232, 162, 58, 0) 72%); }
+.glow-bl::after { background: radial-gradient(48% 62% at 0% 100%, rgba(232, 162, 58, 0.14), rgba(232, 162, 58, 0) 70%); }
+.grit-heavy::before { opacity: 0.34; }
+
+/* umber panels and the paper call sheet get grain of their own */
+.band { position: relative; isolation: isolate; }
+.band::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: url("assets/grit.png"); background-size: 320px; opacity: 0.3; }
+.svc-card { isolation: isolate; }
+.svc-card::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit; background: url("assets/grain-fine.png"); background-size: 200px; opacity: 0.5; }
+.callsheet { position: relative; isolation: isolate; }
+.callsheet::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit; background: url("assets/grit.png"); background-size: 320px; mix-blend-mode: multiply; opacity: 0.3; }
+.marquee { background: url("assets/grain-fine.png") 0 0 / 200px; }
+.site-footer { position: relative; isolation: isolate; }
+.site-footer::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: url("assets/grit.png"); background-size: 320px; opacity: 0.3; }
 
 /* ---------- Scroll reveal ----------
    Only ever hides things when script.js has added .js, so nothing is
