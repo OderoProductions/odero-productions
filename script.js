@@ -138,6 +138,28 @@
       });
     });
 
+    /* ---------- About page: our own video file, loaded only on play ---------- */
+    document.querySelectorAll(".player[data-file]").forEach(function (player) {
+      player.addEventListener("click", function () {
+        var file = player.getAttribute("data-file");
+        if (!/^(\.\.\/)*assets\/[\w\/.-]+\.mp4$/.test(file)) return;
+        var video = document.createElement("video");
+        video.src = file;
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = "auto";
+        video.setAttribute("aria-label", player.getAttribute("data-title") || "Video");
+        var poster = player.querySelector("img");
+        if (poster) video.poster = poster.getAttribute("src");
+        var holder = document.createElement("div");
+        holder.className = "player is-playing";
+        holder.appendChild(video);
+        player.replaceWith(holder);
+        var p = video.play(); if (p && p.catch) p.catch(function () {});
+        video.focus();
+      });
+    });
+
     /* ---------- Footer year ---------- */
     document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
   });
